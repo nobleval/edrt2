@@ -1,4 +1,21 @@
-# configfile.py
+>[!WARNING]
+> Scripts expérimentés uniquement pour la version **3.00.04**
+> (logiciel et firmware).
+
+# weather.py : récupérer l'historique des X-THL
+
+Ce script fournit deux possibilités pour récupérer l'historique des
+données météo X-THL depuis un Ecodevice RT2 : soit via le fichier de
+configuration, soit directement par des requêtes HTTP (les mêmes que
+celles qui servent à afficher les graphes). Les données présentes sont
+exportées dans un fichier csv.
+
+> [!NOTE]
+> Le fichier de configuration ne semble contenir que les données météo de l'année en cours à condition que l'Ecodevice ait été déjà installé avant le début de l'année (à confirmer).
+> Pour récupérer tout l'historique (y compris celui non présent dans le fichier de configuration), la méthode par les requêtes HTTP peut être utilisée. Dans ce cas il faut spécifier une date de début de l'historique. Cette méthode sollicite un peu le serveur web (il faut 3 requêtes - Temp, Hum, Lum - par blocs de 3 jours de données, et par X-THL).
+> Lorsque les données météo sont dans le fichier de configuration, il s'agit du fichier de configuration seule ou du fichier de configuration globale. Les données sont dans la partie "configuration" et non dans la partie "historique".
+
+# globalconfigfile.py : lire et corriger des relevés d'index TIC de l'historique
 
 Ce script fournit des fonctions pour lire et modifier des relevés de
 l'historique d'un fichier de configuration globale exporté ou téléchargé
@@ -58,8 +75,6 @@ la configuration globale.
 > affichée à 19h par l'Ecodevice).
 > 4. Le relevé quotidien à "minuit" du jour courant correspond au relevé à
 > l'heure 00:00 du jour suivant
-> 5. Le script a été expérimenté uniquement pour la version **3.00.04**
-> (logiciel et firmware).
 
 > [!NOTE]
 > Limitations
