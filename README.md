@@ -1,8 +1,9 @@
+# Scripts utilitaires pour l'Ecodevices RT2
 >[!WARNING]
 > Scripts expérimentés uniquement pour la version **3.00.04**
 > (logiciel et firmware).
 
-# weather.py : récupérer l'historique des X-THL
+## weather.py : récupérer l'historique des X-THL
 
 Ce script fournit deux possibilités pour récupérer l'historique des
 données météo X-THL depuis un Ecodevice RT2 : soit via le fichier de
@@ -12,10 +13,16 @@ exportées dans un fichier csv.
 
 > [!NOTE]
 > Le fichier de configuration ne semble contenir que les données météo de l'année en cours à condition que l'Ecodevice ait été déjà installé avant le début de l'année (à confirmer).
-> Pour récupérer tout l'historique (y compris celui non présent dans le fichier de configuration), la méthode par les requêtes HTTP peut être utilisée. Dans ce cas il faut spécifier une date de début de l'historique. Cette méthode sollicite un peu le serveur web (il faut 3 requêtes - Temp, Hum, Lum - par blocs de 3 jours de données, et par X-THL).
+> Pour récupérer tout l'historique (y compris celui non présent dans le fichier de configuration mais encore présent dans l'Ecodevice), la méthode par les requêtes HTTP peut être utilisée. Dans ce cas il faut spécifier une date de début de l'historique. Cette méthode sollicite un peu le serveur web (il faut 3 requêtes - Temp, Hum, Lum - par blocs de 3 jours de données, et par X-THL).
 > Lorsque les données météo sont dans le fichier de configuration, il s'agit du fichier de configuration seule ou du fichier de configuration globale. Les données sont dans la partie "configuration" et non dans la partie "historique".
 
-# globalconfigfile.py : lire et corriger des relevés d'index TIC de l'historique
+> [!NOTE]
+> Limitations
+> 
+> 1. Mot de passe administrateur non pris en charge pour le téléchargement
+> de la configuration
+
+## globalconfigfile.py : lire et corriger des relevés d'index TIC de l'historique
 
 Ce script fournit des fonctions pour lire et modifier des relevés de
 l'historique d'un fichier de configuration globale exporté ou téléchargé
@@ -40,7 +47,7 @@ Les corrections se passent en plusieurs temps :
 
 1. D'abord télécharger le fichier de configuration (manuellement ou via
 la fonction du script).
-2. Travailler à partir du fichier téléchargé et définir manuellement les
+2. Travailler à partir du fichier téléchargé et coder manuellement les
 corrections en appelant les fonctions disponibles dans le script et en
 faisant autant d'essais ou de passes que nécessaire, visualiser les
 problèmes et les corrections à l'aide des fichiers csv générés (pour un
@@ -81,7 +88,8 @@ la configuration globale.
 > 
 > 1. Mot de passe administrateur non pris en charge pour le téléchargement
 > de la configuration
+> 2. L'idéal serait d'éviter de coder chaque correction et que soit pris en charge un fichier csv qui contienne les corrections : ce sera peut-être pour une prochaine version...
 
-## Exemple d'extrait du fichier csv produit
+### Exemple d'extrait du fichier csv produit
 
 ![Extrait fichier csv!](/Visu_histo_relevés_et_calculs.png "Extrait fichier csv")
